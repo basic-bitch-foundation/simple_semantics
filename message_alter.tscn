@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://djf3pujxkfxp4"]
+
+[ext_resource type="Script" uid="uid://41028d6un2iq" path="res://popup.gd" id="1_j6vbj"]
+[ext_resource type="Texture2D" uid="uid://jabgfauo7fgq" path="res://image-removebg-preview (9).png" id="2_33cyi"]
+[ext_resource type="Texture2D" uid="uid://dfoa0dcfbm55" path="res://icon.svg" id="2_83ssg"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_j6vbj")
+
+[node name="scrolpaper" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 5
+texture_repeat = 3
+position = Vector2(379.9765, 361.56442)
+scale = Vector2(3.4935415, 3.93276)
+texture = ExtResource("2_33cyi")
+
+[node name="pl_inpt_bg" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = -468.0
+offset_right = 818.0
+offset_bottom = 1090.0
+color = Color(0.9647059, 0.85490197, 0.6666667, 1)
+metadata/_edit_lock_ = true
+
+[node name="send" type="Button" parent="."]
+z_index = 2
+offset_left = 370.99997
+offset_top = 532.0
+offset_right = 506.99997
+offset_bottom = 668.0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("2_83ssg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(173, 159)
+enabled = false
+
+[node name="text" type="Node2D" parent="."]
+position = Vector2(55, 55)
+
+[node name="rawmessage" type="Label" parent="text"]
+z_index = 2
+offset_left = 190.0
+offset_top = 126.0
+offset_right = 509.0
+offset_bottom = 326.0
+
+[node name="Input" type="LineEdit" parent="text"]
+z_index = 2
+offset_left = 174.0
+offset_top = 238.0
+offset_right = 501.0
+offset_bottom = 451.0
+flat = true
+caret_blink = true
+
+[node name="titlelabel" type="Label" parent="text"]
+z_index = 2
+offset_left = 200.0
+offset_top = 81.0
+offset_right = 547.0
+offset_bottom = 161.0
