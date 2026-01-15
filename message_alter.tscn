@@ -1,63 +1,83 @@
 [gd_scene load_steps=4 format=3 uid="uid://djf3pujxkfxp4"]
 
-[ext_resource type="Script" uid="uid://41028d6un2iq" path="res://popup.gd" id="1_j6vbj"]
-[ext_resource type="Texture2D" uid="uid://jabgfauo7fgq" path="res://image-removebg-preview (9).png" id="2_33cyi"]
-[ext_resource type="Texture2D" uid="uid://dfoa0dcfbm55" path="res://icon.svg" id="2_83ssg"]
+[ext_resource type="Script" uid="uid://c6mv5q5gqqnb7" path="res://main.gd" id="1_83ssg"]
+[ext_resource type="Texture2D" uid="uid://cbv08bwwwyhu3" path="res://write.png" id="2_83ssg"]
+[ext_resource type="FontFile" uid="uid://c6ih14hwgww7u" path="res://PixelifySans-Regular.ttf" id="3_33cyi"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_j6vbj")
+script = ExtResource("1_83ssg")
 
-[node name="scrolpaper" type="Sprite2D" parent="."]
-z_index = 1
-texture_filter = 5
-texture_repeat = 3
-position = Vector2(379.9765, 361.56442)
-scale = Vector2(3.4935415, 3.93276)
-texture = ExtResource("2_33cyi")
+[node name="InputPanel" type="Node2D" parent="."]
 
-[node name="pl_inpt_bg" type="ColorRect" parent="."]
-offset_left = -30.0
-offset_top = -468.0
-offset_right = 818.0
-offset_bottom = 1090.0
-color = Color(0.9647059, 0.85490197, 0.6666667, 1)
-metadata/_edit_lock_ = true
+[node name="Panelbg" type="Sprite2D" parent="InputPanel"]
+position = Vector2(405.09995, 88.25014)
+scale = Vector2(1.9837376, 1.9662036)
+texture = ExtResource("2_83ssg")
 
-[node name="send" type="Button" parent="."]
-z_index = 2
-offset_left = 370.99997
-offset_top = 532.0
-offset_right = 506.99997
-offset_bottom = 668.0
-scale = Vector2(0.2, 0.2)
-icon = ExtResource("2_83ssg")
+[node name="ban_words" type="Label" parent="InputPanel"]
+offset_left = -673.0
+offset_top = 105.0
+offset_right = 1446.0
+offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 32
+
+[node name="input" type="TextEdit" parent="InputPanel"]
+offset_left = -681.0
+offset_top = 331.0
+offset_right = 1448.0
+offset_bottom = 939.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 39
+
+[node name="rawmsg" type="Label" parent="InputPanel"]
+offset_left = -662.0
+offset_top = -339.0
+offset_right = 1417.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 64
+autowrap_mode = 2
+
+[node name="send" type="Button" parent="InputPanel"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Card" type="Node2D" parent="."]
+
+[node name="CardBG" type="Sprite2D" parent="Card"]
+
+[node name="Portrait" type="Sprite2D" parent="Card"]
+
+[node name="MessageLabel" type="Label" parent="Card"]
+offset_left = -33.0
+offset_top = 90.0
+offset_right = 7.0
+offset_bottom = 113.0
+autowrap_mode = 2
+
+[node name="NameLabel" type="Label" parent="Card"]
+offset_left = -61.0
+offset_top = 48.0
+offset_right = -21.0
+offset_bottom = 71.0
+
+[node name="Button" type="Button" parent="Card"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="resultbg" type="Sprite2D" parent="Node2D"]
+
+[node name="score" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="restart" type="Button" parent="Node2D"]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(173, 159)
-enabled = false
-
-[node name="text" type="Node2D" parent="."]
-position = Vector2(55, 55)
-
-[node name="rawmessage" type="Label" parent="text"]
-z_index = 2
-offset_left = 190.0
-offset_top = 126.0
-offset_right = 509.0
-offset_bottom = 326.0
-
-[node name="Input" type="LineEdit" parent="text"]
-z_index = 2
-offset_left = 174.0
-offset_top = 238.0
-offset_right = 501.0
-offset_bottom = 451.0
-flat = true
-caret_blink = true
-
-[node name="titlelabel" type="Label" parent="text"]
-z_index = 2
-offset_left = 200.0
-offset_top = 81.0
-offset_right = 547.0
-offset_bottom = 161.0
+position = Vector2(381, 302)
+zoom = Vector2(0.41, 0.41)

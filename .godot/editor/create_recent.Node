@@ -1,9 +1,13 @@
-Node2D
 Camera2D
 Button
-LineEdit
-ColorRect
 Label
 Sprite2D
+Node2D
+Node
+HScrollBar
+TextEdit
+TextureButton
+LineEdit
+ColorRect
 Panel
 CanvasLayer
