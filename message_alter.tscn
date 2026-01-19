@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://djf3pujxkfxp4"]
+[gd_scene load_steps=8 format=3 uid="uid://djf3pujxkfxp4"]
 
 [ext_resource type="Script" uid="uid://c6mv5q5gqqnb7" path="res://main.gd" id="1_83ssg"]
 [ext_resource type="Texture2D" uid="uid://cbv08bwwwyhu3" path="res://write.png" id="2_83ssg"]
 [ext_resource type="FontFile" uid="uid://c6ih14hwgww7u" path="res://PixelifySans-Regular.ttf" id="3_33cyi"]
+[ext_resource type="Texture2D" uid="uid://diaclvwiubdag" path="res://image/ss_buttons.png" id="4_ev6xn"]
+[ext_resource type="Texture2D" uid="uid://bh0l7jcl44ate" path="res://image/writing_tab.png" id="4_nmpyr"]
+[ext_resource type="Texture2D" uid="uid://c1wpjay3ywosr" path="res://image/bg_ss2.png" id="6_nmpyr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wyon"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_83ssg")
@@ -13,71 +19,128 @@ script = ExtResource("1_83ssg")
 position = Vector2(405.09995, 88.25014)
 scale = Vector2(1.9837376, 1.9662036)
 texture = ExtResource("2_83ssg")
+metadata/_edit_lock_ = true
 
 [node name="ban_words" type="Label" parent="InputPanel"]
 offset_left = -673.0
-offset_top = 105.0
+offset_top = 48.0
 offset_right = 1446.0
-offset_bottom = 298.0
+offset_bottom = 241.0
 theme_override_fonts/font = ExtResource("3_33cyi")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 45
 
 [node name="input" type="TextEdit" parent="InputPanel"]
-offset_left = -681.0
-offset_top = 331.0
-offset_right = 1448.0
-offset_bottom = 939.0
+z_index = 2
+offset_left = -631.0
+offset_top = 332.0
+offset_right = 1249.0
+offset_bottom = 881.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_33cyi")
 theme_override_font_sizes/font_size = 39
+theme_override_styles/normal = SubResource("StyleBoxFlat_5wyon")
+placeholder_text = "write here!"
+scroll_smooth = true
+metadata/_edit_lock_ = true
 
 [node name="rawmsg" type="Label" parent="InputPanel"]
-offset_left = -662.0
-offset_top = -339.0
-offset_right = 1417.0
-offset_bottom = 167.0
+offset_left = -666.0
+offset_top = -240.0
+offset_right = 1413.0
+offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("3_33cyi")
 theme_override_font_sizes/font_size = 64
 autowrap_mode = 2
 
 [node name="send" type="Button" parent="InputPanel"]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1265.0
+offset_top = 721.0
+offset_right = 1670.0
+offset_bottom = 1162.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("4_ev6xn")
+flat = true
+
+[node name="writing_tab" type="Sprite2D" parent="InputPanel"]
+z_index = 2
+position = Vector2(273.6251, 589.28125)
+scale = Vector2(2.3959377, 2.689463)
+texture = ExtResource("4_nmpyr")
+metadata/_edit_lock_ = true
+
+[node name="NPCINT" type="Label" parent="InputPanel"]
+offset_left = -606.0
+offset_top = 333.0
+offset_right = 1175.0
+offset_bottom = 860.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 64
+
+[node name="prevNPC" type="Node2D" parent="InputPanel"]
+metadata/_edit_lock_ = true
+
+[node name="previcon" type="Sprite2D" parent="InputPanel/prevNPC"]
+z_index = 2
+position = Vector2(165, 17)
+scale = Vector2(0.5, 0.5)
+
+[node name="prevmsg" type="Label" parent="InputPanel/prevNPC"]
+offset_left = 343.0
+offset_top = -20.0
+offset_right = 1441.0
+offset_bottom = 364.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 44
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="prev_bubble" type="Sprite2D" parent="InputPanel/prevNPC"]
+position = Vector2(858.0937, 70.249985)
+scale = Vector2(1.3739343, 1.4432367)
+texture = ExtResource("4_nmpyr")
 
 [node name="Card" type="Node2D" parent="."]
 
 [node name="CardBG" type="Sprite2D" parent="Card"]
+texture_filter = 4
+texture_repeat = 2
+position = Vector2(-1351.0001, 277)
+scale = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
 
-[node name="Portrait" type="Sprite2D" parent="Card"]
-
-[node name="MessageLabel" type="Label" parent="Card"]
-offset_left = -33.0
-offset_top = 90.0
-offset_right = 7.0
-offset_bottom = 113.0
-autowrap_mode = 2
-
-[node name="NameLabel" type="Label" parent="Card"]
-offset_left = -61.0
-offset_top = 48.0
-offset_right = -21.0
-offset_bottom = 71.0
-
-[node name="Button" type="Button" parent="Card"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="personality" type="Label" parent="Card"]
+offset_left = -1703.0
+offset_top = 423.0
+offset_right = -966.0
+offset_bottom = 926.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 44
+autowrap_mode = 3
+justification_flags = 171
+metadata/_edit_lock_ = true
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 
 [node name="resultbg" type="Sprite2D" parent="Node2D"]
 
 [node name="score" type="Label" parent="Node2D"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -590.0
+offset_top = -284.0
+offset_right = 1382.0
+offset_bottom = 179.0
 
 [node name="restart" type="Button" parent="Node2D"]
 offset_right = 8.0
 offset_bottom = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(381, 302)
-zoom = Vector2(0.41, 0.41)
+position = Vector2(-8, 286)
+zoom = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+position = Vector2(187.9457, 152.99399)
+scale = Vector2(2.7364187, 2.7555447)
+texture = ExtResource("6_nmpyr")

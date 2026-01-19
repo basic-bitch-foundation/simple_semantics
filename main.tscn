@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf3p867fwgkuh"]
+
+[ext_resource type="Texture2D" uid="uid://cwyt68onr6i8t" path="res://image/bg_ss0.png" id="1_ig7tw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ig7tw")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

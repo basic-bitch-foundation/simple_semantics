@@ -1,1 +1,3 @@
 res://main.gd
+res://message_alter.tscn
+res://character_body_2d.gd
