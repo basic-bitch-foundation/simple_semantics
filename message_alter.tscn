@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://djf3pujxkfxp4"]
+[gd_scene load_steps=15 format=3 uid="uid://djf3pujxkfxp4"]
 
 [ext_resource type="Script" uid="uid://c6mv5q5gqqnb7" path="res://main.gd" id="1_83ssg"]
 [ext_resource type="Texture2D" uid="uid://cbv08bwwwyhu3" path="res://write.png" id="2_83ssg"]
 [ext_resource type="FontFile" uid="uid://c6ih14hwgww7u" path="res://PixelifySans-Regular.ttf" id="3_33cyi"]
+[ext_resource type="FontFile" uid="uid://dmxptqeirlukl" path="res://Almendra-BoldItalic.ttf" id="3_wynta"]
 [ext_resource type="Texture2D" uid="uid://diaclvwiubdag" path="res://image/ss_buttons.png" id="4_ev6xn"]
 [ext_resource type="Texture2D" uid="uid://bh0l7jcl44ate" path="res://image/writing_tab.png" id="4_nmpyr"]
+[ext_resource type="FontFile" uid="uid://b48vpl27cctel" path="res://MedievalSharp-Regular.ttf" id="4_q1vt7"]
+[ext_resource type="FontFile" uid="uid://x6aymrf0c3kf" path="res://Almendra-Bold.ttf" id="5_wynta"]
 [ext_resource type="Texture2D" uid="uid://c1wpjay3ywosr" path="res://image/bg_ss2.png" id="6_nmpyr"]
+[ext_resource type="Texture2D" uid="uid://cvmoystyxkspa" path="res://image/instruction_tab.png" id="7_5wyon"]
+[ext_resource type="Texture2D" uid="uid://dbhcxuiip0e5s" path="res://image/coin.png" id="8_g1u0a"]
+[ext_resource type="Texture2D" uid="uid://bq8vr16622kt8" path="res://image/back_btn.png" id="9_s1rt7"]
+[ext_resource type="FontFile" uid="uid://dfga7etau2ub3" path="res://Metamorphous-Regular.ttf" id="10_p88kc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wyon"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -26,8 +33,8 @@ offset_left = -673.0
 offset_top = 48.0
 offset_right = 1446.0
 offset_bottom = 241.0
-theme_override_fonts/font = ExtResource("3_33cyi")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("3_wynta")
+theme_override_font_sizes/font_size = 57
 
 [node name="input" type="TextEdit" parent="InputPanel"]
 z_index = 2
@@ -38,9 +45,10 @@ offset_bottom = 881.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_33cyi")
-theme_override_font_sizes/font_size = 39
+theme_override_font_sizes/font_size = 54
 theme_override_styles/normal = SubResource("StyleBoxFlat_5wyon")
 placeholder_text = "write here!"
+wrap_mode = 1
 scroll_smooth = true
 metadata/_edit_lock_ = true
 
@@ -49,7 +57,7 @@ offset_left = -666.0
 offset_top = -240.0
 offset_right = 1413.0
 offset_bottom = 285.0
-theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_fonts/font = ExtResource("5_wynta")
 theme_override_font_sizes/font_size = 64
 autowrap_mode = 2
 
@@ -90,7 +98,7 @@ offset_left = 343.0
 offset_top = -20.0
 offset_right = 1441.0
 offset_bottom = 364.0
-theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_fonts/font = ExtResource("4_q1vt7")
 theme_override_font_sizes/font_size = 44
 autowrap_mode = 3
 metadata/_edit_lock_ = true
@@ -110,30 +118,35 @@ scale = Vector2(2.5, 2.5)
 metadata/_edit_lock_ = true
 
 [node name="personality" type="Label" parent="Card"]
-offset_left = -1703.0
-offset_top = 423.0
-offset_right = -966.0
-offset_bottom = 926.0
-theme_override_fonts/font = ExtResource("3_33cyi")
-theme_override_font_sizes/font_size = 44
+offset_left = -1706.0
+offset_top = 374.0
+offset_right = -969.0
+offset_bottom = 999.0
+theme_override_fonts/font = ExtResource("4_q1vt7")
+theme_override_font_sizes/font_size = 41
 autowrap_mode = 3
 justification_flags = 171
-metadata/_edit_lock_ = true
 
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
+[node name="result" type="Node2D" parent="."]
 
-[node name="resultbg" type="Sprite2D" parent="Node2D"]
-
-[node name="score" type="Label" parent="Node2D"]
-offset_left = -590.0
-offset_top = -284.0
-offset_right = 1382.0
+[node name="finale" type="Label" parent="result"]
+offset_left = -669.0
+offset_top = -374.0
+offset_right = 1420.0
 offset_bottom = 179.0
+theme_override_fonts/font = ExtResource("10_p88kc")
+theme_override_font_sizes/font_size = 64
+autowrap_mode = 3
 
-[node name="restart" type="Button" parent="Node2D"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="declare" type="Label" parent="result"]
+offset_left = -625.0
+offset_top = 357.0
+offset_right = 1425.0
+offset_bottom = 933.0
+theme_override_fonts/font = ExtResource("5_wynta")
+theme_override_font_sizes/font_size = 45
+vertical_alignment = 3
+autowrap_mode = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-8, 286)
@@ -144,3 +157,60 @@ z_index = -4
 position = Vector2(187.9457, 152.99399)
 scale = Vector2(2.7364187, 2.7555447)
 texture = ExtResource("6_nmpyr")
+metadata/_edit_lock_ = true
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+
+[node name="Label" type="Label" parent="Node2D2"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="instruction" type="Node2D" parent="."]
+
+[node name="instruction" type="Label" parent="instruction"]
+z_index = 1
+offset_left = -1746.0
+offset_top = -241.0
+offset_right = -950.0
+offset_bottom = 1088.0
+theme_override_fonts/font = ExtResource("4_q1vt7")
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="tab" type="Sprite2D" parent="instruction"]
+position = Vector2(-422, 984.89056)
+scale = Vector2(2.5014205, 3.0131655)
+texture = ExtResource("7_5wyon")
+metadata/_edit_lock_ = true
+
+[node name="coin" type="Node2D" parent="."]
+
+[node name="quant" type="Label" parent="coin"]
+z_index = 3
+offset_left = 1942.0
+offset_top = -924.0
+offset_right = 2059.0
+offset_bottom = -684.0
+theme_override_fonts/font = ExtResource("3_33cyi")
+theme_override_font_sizes/font_size = 200
+text = "2"
+
+[node name="Sprite2D" type="Sprite2D" parent="coin"]
+z_index = 2
+texture_filter = 1
+position = Vector2(1813, -788)
+scale = Vector2(0.86, 0.8466667)
+texture = ExtResource("8_g1u0a")
+
+[node name="back" type="Button" parent="."]
+offset_left = -2107.0
+offset_top = -869.0
+offset_right = -1943.0
+offset_bottom = -755.0
+icon = ExtResource("9_s1rt7")
+flat = true

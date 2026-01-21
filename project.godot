@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="simple_semantics"
+run/main_scene="uid://cf3p867fwgkuh"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*res://audio_manager.gd"
 
 [display]
 
@@ -28,3 +33,4 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

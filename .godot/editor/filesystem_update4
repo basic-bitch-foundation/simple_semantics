@@ -1,3 +1,7 @@
-res://main.gd
 res://message_alter.tscn
-res://character_body_2d.gd
+res://audio_manager.gd
+res://main.gd
+res://save text.txt
+res://setting.tscn
+res://menu.gd
+res://setting.gd

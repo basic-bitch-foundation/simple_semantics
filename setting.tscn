@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://0bhsmup48sp2"]
+
+[ext_resource type="Texture2D" uid="uid://bvirlttrerva7" path="res://image/settings_tab.png" id="1_110nh"]
+[ext_resource type="Script" uid="uid://i5r15fta3up6" path="res://setting.gd" id="1_lv82f"]
+[ext_resource type="Texture2D" uid="uid://dfoa0dcfbm55" path="res://icon.svg" id="2_lv82f"]
+[ext_resource type="Texture2D" uid="uid://divej3x7qjsa4" path="res://image/unmute.png" id="4_twti6"]
+
+[node name="settings" type="Node2D"]
+script = ExtResource("1_lv82f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(837, 704.00006)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_110nh")
+
+[node name="GH" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 436.0
+offset_top = 177.0
+offset_right = 572.0
+offset_bottom = 313.0
+scale = Vector2(0.6, 0.6)
+icon = ExtResource("2_lv82f")
+flat = true
+
+[node name="bck" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+offset_left = 447.00003
+offset_top = 8.0
+offset_right = 583.0
+offset_bottom = 144.0
+scale = Vector2(0.41, 0.41)
+icon = ExtResource("2_lv82f")
+
+[node name="mute" type="Button" parent="."]
+offset_left = 63.0
+offset_top = 434.0
+offset_right = 179.0
+offset_bottom = 540.0
+icon = ExtResource("4_twti6")
+flat = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(273, 465)
+zoom = Vector2(0.7, 0.7)
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 226.0
+offset_top = 481.0
+offset_right = 484.0
+offset_bottom = 497.0
