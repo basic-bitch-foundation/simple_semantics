@@ -110,7 +110,7 @@ Use synonyms, metaphors, creative language!
 Press SEND when ready to begin!"""
 
 const apiurl = "https://ai.hackclub.com/proxy/v1/chat/completions"
-const apikey = ""
+var apikey = ""
 
 var http: HTTPRequest
 var curstate = 0
@@ -138,13 +138,16 @@ var warntim = null
 const warntime = 3.0
 
 func parsej(cnt):
+	if cnt == null or not cnt is String: return null
 	var p = JSON.parse_string(cnt)
 	if p != null: return p
 	var st = cnt.find("{")
 	var en = cnt.rfind("}") + 1
-	if st>=0 and en>st:
-		return JSON.parse_string(cnt.substr(st,en-st))
+	if st >= 0 and en > st:
+		return JSON.parse_string(cnt.substr(st, en - st))
 	return null
+
+	
 
 func aierr():
 	stopcur()
@@ -167,14 +170,43 @@ func airesponse(res,_rc,_h,bod):
 	if j==null or not j.has("choices"):
 		aierr()
 		return
-	var c=j["choices"][0]["message"]["content"]
-	var prs=parsej(c)
-	if prs!=null and prs.has("chain"):
-		interps=prs["chain"]
-		qres=prs.get("queen",{"understanding":"I don't understand...","action":"Nothing","survival_score":0,"action_taken":false})
-		shownpc()
-	else:
+	var chs = j["choices"]
+	if not chs is Array or chs.is_empty():
+	
 		aierr()
+		return
+	var msg = chs[0].get("message", null)
+	if msg == null:
+	
+		aierr()
+		return
+	var c = msg.get("content", null)
+	if c == null:
+		aierr()
+		return
+		
+	var prs = parsej(c)
+	if prs == null:
+		aierr()
+		return
+	var ch = prs.get("chain", null)
+	if ch == null:
+		aierr()
+		return
+		
+	interps = ch
+	qres = prs.get("queen", {
+		"understanding": "I don't understand...",
+		"action": "Nothing",
+		"survival_score": 0,
+		"action_taken": false
+	})
+	shownpc()
+	
+	
+	
+	
+	
 
 func aireq():
 	var tls=TLSOptions.client()
@@ -247,17 +279,17 @@ EXAMPLES:
 RESPOND ONLY IN VALID JSON (no markdown, no extra text):
 {
   "chain": [
-    {"npc": "The Merchant", "message": "..."},
-    {"npc": "The Boy", "message": "..."},
-    {"npc": "The Guard", "message": "..."},
-    {"npc": "The Drunk", "message": "..."},
-    {"npc": "The Scholar", "message": "..."}
+	{"npc": "The Merchant", "message": "..."},
+	{"npc": "The Boy", "message": "..."},
+	{"npc": "The Guard", "message": "..."},
+	{"npc": "The Drunk", "message": "..."},
+	{"npc": "The Scholar", "message": "..."}
   ],
   "queen": {
-    "understanding": "What the Queen deduces after reading all 5 NPC messages",
-    "action": "What specific action the Queen decides to take",
-    "survival_score": 0-100,
-    "action_taken": true or false
+	"understanding": "What the Queen deduces after reading all 5 NPC messages",
+	"action": "What specific action the Queen decides to take",
+	"survival_score": 0-100,
+	"action_taken": true or false
   }
 }"""
 
@@ -277,6 +309,9 @@ Simulate the chain! Remember: each NPC only hears the previous one, but the Quee
 		aierr()
 
 func _ready():
+	var cfg = ConfigFile.new()
+	if cfg.load("user://api.cfg") == OK:
+		apikey = cfg.get_value("api", "key", "")
 	http=HTTPRequest.new()
 	http.use_threads=true
 	add_child(http)

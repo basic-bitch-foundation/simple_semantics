@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf3p867fwgkuh"]
+[gd_scene load_steps=7 format=3 uid="uid://cf3p867fwgkuh"]
 
 [ext_resource type="Texture2D" uid="uid://bltui4kfl8bwp" path="res://image/bg_ss_final.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://2gb81lspv2i7" path="res://menu.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://0bhsmup48sp2" path="res://setting.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://dcgetufcex2kp" path="res://popup_api.gd" id="4_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dl21u2w0ssdf" path="res://image/semantics_api_bg.png" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://bq8vr16622kt8" path="res://image/back_btn.png" id="6_5vw27"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -39,3 +42,68 @@ zoom = Vector2(0.67, 0.67)
 visible = false
 position = Vector2(-273, -397)
 scale = Vector2(0.9, 0.9)
+
+[node name="apipop" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_7mycd")
+
+[node name="bg" type="TextureRect" parent="apipop"]
+layout_mode = 0
+offset_left = -359.99997
+offset_top = -65.0
+offset_right = 1620.0
+offset_bottom = 1015.0
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("5_272bh")
+
+[node name="xbtn" type="TextureButton" parent="apipop"]
+layout_mode = 0
+offset_left = -301.0
+offset_top = 39.0
+offset_right = -157.0
+offset_bottom = 139.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("6_5vw27")
+
+[node name="info" type="RichTextLabel" parent="apipop"]
+layout_mode = 0
+offset_left = -250.0
+offset_top = 197.0
+offset_right = 37.0
+offset_bottom = 221.0
+bbcode_enabled = true
+text = "Get your API key "
+fit_content = true
+
+[node name="inp" type="LineEdit" parent="apipop"]
+layout_mode = 0
+offset_left = -223.0
+offset_top = 81.0
+offset_right = 113.5625
+offset_bottom = 112.0
+placeholder_text = "sk-01.....api key here"
+
+[node name="savbtn" type="Button" parent="apipop"]
+layout_mode = 0
+offset_left = 246.0
+offset_top = 272.0
+offset_right = 398.0
+offset_bottom = 380.0
+rotation = 3.1415927
+scale = Vector2(0.39, 0.39)
+icon = ExtResource("6_5vw27")
+flat = true
+
+[node name="lnk" type="Button" parent="apipop"]
+modulate = Color(0.12941177, 0.14901961, 0.18039216, 1)
+layout_mode = 0
+offset_left = -121.0
+offset_top = 193.0
+offset_right = -77.0
+offset_bottom = 224.0
+text = "here
+"
+flat = true

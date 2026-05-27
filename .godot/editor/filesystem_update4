@@ -1,7 +1,3 @@
-res://message_alter.tscn
-res://audio_manager.gd
 res://main.gd
-res://save text.txt
-res://setting.tscn
-res://menu.gd
-res://setting.gd
+res://main.tscn
+res://popup_api.gd
