@@ -39,7 +39,6 @@ metadata/_edit_lock_ = true
 zoom = Vector2(0.67, 0.67)
 
 [node name="settings2" parent="." instance=ExtResource("3_h2yge")]
-visible = false
 position = Vector2(-273, -397)
 scale = Vector2(0.9, 0.9)
 
@@ -84,7 +83,7 @@ offset_left = -223.0
 offset_top = 81.0
 offset_right = 113.5625
 offset_bottom = 112.0
-placeholder_text = "sk-01.....api key here"
+caret_blink = true
 
 [node name="savbtn" type="Button" parent="apipop"]
 layout_mode = 0

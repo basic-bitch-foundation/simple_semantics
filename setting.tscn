@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://divej3x7qjsa4" path="res://image/unmute.png" id="4_twti6"]
 
 [node name="settings" type="Node2D"]
+visible = false
 script = ExtResource("1_lv82f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

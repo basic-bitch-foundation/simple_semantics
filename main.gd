@@ -163,10 +163,12 @@ func aierr():
 func airesponse(res,_rc,_h,bod):
 	stopcur()
 	if res!=HTTPRequest.RESULT_SUCCESS:
+		print("http fail code: ", res)
 		aierr()
 		return
 	var jstr=bod.get_string_from_utf8()
 	var j=JSON.parse_string(jstr)
+	print("api raw: ", jstr)
 	if j==null or not j.has("choices"):
 		aierr()
 		return
@@ -209,8 +211,8 @@ func airesponse(res,_rc,_h,bod):
 	
 
 func aireq():
-	var tls=TLSOptions.client()
-	http.set_tls_options(tls)
+	#var tls=TLSOptions.client_unsafe()
+	#http.set_tls_options(tls)
 	
 	var npclist=""
 	for i in range(folks.size()):
@@ -271,7 +273,7 @@ EXAMPLES:
  >Scholar: "Incomprehensible utterings, devoid of semantic content."
  >Queen: understanding="I have no idea what this message means", survival_score=0, action_taken=false
 
-✅ GOOD INPUT: "The evening beverage container has bad plant juice from the foreign visitor"
+ GOOD INPUT: "The evening beverage container has bad plant juice from the foreign visitor"
 → NPCs misinterpret with their personalities BUT they understand it's about danger
 → Queen can piece together it's about poison and a diplomat
 → survival_score = 60-80, action_taken = true
@@ -302,7 +304,7 @@ PLAYER'S ENCODED MESSAGE (what the Merchant hears):
 Simulate the chain! Remember: each NPC only hears the previous one, but the Queen reads ALL 5 interpretations on a scroll."""%[rawmsg,plrmsg]
 
 	var hdr=["Content-Type: application/json","Authorization: Bearer "+apikey]
-	var bod={"model":"gpt-4o-mini","messages":[{"role":"system","content":sysp},{"role":"user","content":usrm}],"temperature":0.85,"max_tokens":1500}
+	var bod={"model":"qwen/qwen3-32b","messages":[{"role":"system","content":sysp},{"role":"user","content":usrm}],"temperature":0.85,"max_tokens":1500}
 	var e=http.request(apiurl,hdr,HTTPClient.METHOD_POST,JSON.stringify(bod))
 	if e!=OK:
 		stopcur()
@@ -314,6 +316,7 @@ func _ready():
 		apikey = cfg.get_value("api", "key", "")
 	http=HTTPRequest.new()
 	http.use_threads=true
+	http.set_tls_options(TLSOptions.client_unsafe())
 	add_child(http)
 	http.request_completed.connect(airesponse)
 	
@@ -614,9 +617,11 @@ func showq():
 	sndb.disabled=false
 
 func makedecl(surv,actd,msuc,asuc,coins)->String:
+	
 	var tx=" SURVIVAL SCORE: "+str(surv)+"%\n\n"
 	if msuc and asuc:
 		tx+=" PERFECT SUCCESS!\n\n"
+		
 		tx+="The Queen understood your warning AND took protective action!  "
 		tx+="The kingdom is safe thanks to your clever wordplay!\n\n"
 		tx+=" REWARD: "+str(coins)+" COINS!"

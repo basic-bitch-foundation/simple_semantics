@@ -7,6 +7,8 @@ extends Node2D
 
 const GITHUB_URL = "https://github.com/basic-bitch-foundation/simple_semantics"
 
+
+
 func _ready():
 	github_btn.pressed.connect(_on_github_pressed)
 	back_btn.pressed.connect(_on_back_pressed)
@@ -52,8 +54,3 @@ func _update_mute_icon():
 	else:
 		if ResourceLoader. exists("res://image/unmute.png"):
 			mute_btn.icon = load("res://image/unmute.png")
-'''
-
-
-
-'''
